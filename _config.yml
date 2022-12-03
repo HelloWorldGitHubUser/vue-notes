@@ -1,0 +1,13 @@
+title: Vue学习笔记
+description: 记录学习Vue的笔记
+
+remote_theme: rundocs/jekyll-rtd-theme
+
+readme_index:
+  with_frontmatter: true
+
+exclude:
+  - Makefile
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
