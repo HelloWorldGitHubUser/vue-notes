@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法</title>
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+
+</head>
+<body>
+    <!--准备好一个容器-->
+    <div id="root">
+        <!--普通写法-->
+        <!-- 单向数据绑定：<input type="text" v-bind:value="name"><br/>
+        双向数据绑定：<input type="text" v-model:value="name"><br/> -->
+
+        <!--简写-->
+        单向数据绑定：<input type="text" :value="name"><br/>
+        双向数据绑定：<input type="text" v-model="name"><br/>       
+    </div>
+
+    <script type="text/javascript">
+        const v = new Vue({
+            // el: '#root', //第一种写法
+            data:{ // 用于存储数据，供el提供的容器使用。
+                name: 'ironartisan',
+                school: {
+                    name: 'halo',
+                    url: 'https://ironartisan.top'
+                }
+                
+            }
+        })
+
+        console.log(v)
+        v.$mount('#root') //第二种写法
+    </script>
+</body>
+</html>
