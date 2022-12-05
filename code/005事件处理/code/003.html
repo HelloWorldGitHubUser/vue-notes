@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+    <script type="text/javascript" src="../js/vue.min.js"></script>
+    <style>
+        *{
+            margin-top: 20px;
+        }
+        .demo1{
+            height: 50px;
+            background-color:skyblue;
+        }
+        .box1{
+            padding:5px;
+            background-color: antiquewhite;
+        }
+        .box2{
+            padding:5px;
+            background-color:blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h2> 欢迎来到{{name}}</h2>
+        <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+
+    </div>
+</body>
+    <script type="text/javascript">
+
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                name:'博客',
+            },
+            methods: {
+                showInfo(e){
+                    console.log(e.target.value)
+                    // alert('同学你好')
+                },
+                showMessage(msg){
+                    console.log(msg)
+                },
+            },
+        })
+    </script>
+
+
+</html>
