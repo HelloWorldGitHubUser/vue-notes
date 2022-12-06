@@ -4,16 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>天气案例</title>
+    <title>条件渲染</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
 
 </head>
 <body>
     <div id="root">
-       <h2>今天天气很{{info}}</h2>
-       <button @click="changeWeather">切换天气</button>
-        <!-- 简单语句 -->
-        <!-- <button @click="isHot = !isHot">切换天气</button> -->
+        <!-- 使用v-show做条件渲染 -->
+       <!-- <h2 v-show="a">欢迎来到{{name}}</h2> -->
+
+         <!-- 使用v-show做条件渲染 -->
+       <!-- <h2 v-if="a">欢迎来到{{name}}</h2> -->
+
+       <h2>当前的n值是:{{n}}</h2>
+
+       <button @click="n++">点我n+1</button>
+       <div v-if="n == 1">Angular</div>
+       <div v-if="n == 2">Vue</div>
+       <div v-if="n == 3">React</div>
+
+
+      
     </div>
 
     <script type="text/javascript">
@@ -21,17 +32,8 @@
         const vm = new Vue({
             el:'#root',
             data:{
-                isHot:true
-            },
-            computed:{
-                info(){
-                    return this.isHot ? '炎热' : '凉爽'
-                }
-            },
-            methods: {
-                changeWeather(){
-                    this.isHot = !this.isHot
-                }
+                name:'ironartisan',
+                n: 0 
             },
         })
     </script>
