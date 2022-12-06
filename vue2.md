@@ -121,7 +121,7 @@ data:function() {
 - 使用watch时根据数据的具体结构，决定是否采用深度监视
   
 
-## computed 䄨watch之问的区别:
+## computed与watch之问的区别:
 - computed能完成的功能，watch都可以完成。
 - watch能完成的功能，computed不一定完成，例如：watch可以进行异步操作。
 - 两个重要的小原则: 
