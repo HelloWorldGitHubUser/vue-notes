@@ -121,5 +121,10 @@ data:function() {
 - 使用watch时根据数据的具体结构，决定是否采用深度监视
   
 
-
+## computed 䄨watch之问的区别:
+- computed能完成的功能，watch都可以完成。
+- watch能完成的功能，computed不一定完成，例如：watch可以进行异步操作。
+- 两个重要的小原则: 
+  - 所被vue管理的函数，最好写成普通函数，这样this的指向才是vm或组件实例对象。
+  - 所有不被vue管理的函数（定时器的回调函数、ajax的回调函数、promise的回调函数），最好写成箭头函数，这样this的指向才是vm或组件实例对象。
 
