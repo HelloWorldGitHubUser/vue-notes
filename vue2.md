@@ -76,25 +76,25 @@ data:function() {
 
 ### 基本使用
 
-- 使用v-on:xxx或@xxx绑定事件，其中xxx是事件名；
-- 事件的回调需要配置在methods对象中，最终会在vm上；
-- methods中配置的函数，不要用箭头函数，否则this就不是vm了；
-- methods中配置的函数，都是被vue管理的函数，this的指向是vm或组件实例对象；
-- @click="demo"和 @click="demo($event)"效果一致，但后者可以传参。
+- 使用`v-on:xxx`或`@xxx`绑定事件，其中`xxx`是事件名；
+- 事件的回调需要配置在methods对象中，最终会在`vm`上；
+- methods中配置的函数，不要用箭头函数，否则`this`就不是`vm`了；
+- methods中配置的函数，都是被Vue管理的函数，`this`的指向是vm或组件实例对象；
+- `@click="demo"`和 `@click="demo($event)"`效果一致，但后者可以传参。
 
 ### 事件修饰符
 
-- prevent:阻止默认事件（常用）；
-- stop:阻止事件冒泡（常用）；
-- once：事件只触发一次（常用）；
-- capture：使用事件的捕获模块；
-- self：只有event，target是当前操作元素才触发事件；
-- passive：事件的默认行为立即执行，无需等待事件回调执行完毕；
+- `prevent`:阻止默认事件（常用）；
+- `stop`:阻止事件冒泡（常用）；
+- `once`：事件只触发一次（常用）；
+- `capture`：使用事件的捕获模块；
+- `self`：只有event，target是当前操作元素才触发事件；
+- `passive`：事件的默认行为立即执行，无需等待事件回调执行完毕；
   
 ## 计算属性
 
 - 定义：要用的属性不存在，要通过已有属性计算得来
-- 原理：底层借助了Object.defineproperty方法提供的getter和setter
+- 原理：底层借助了`Object.defineproperty`方法提供的`getter`和`setter`
 - get函数什么时候执行？
   - 初次读取时会执行一次
   - 当依赖的数据发生改变时会被再次调用
@@ -108,13 +108,13 @@ data:function() {
 - 当监视属性变化时，回调函数自动调用，进行相关操作
 - 监视的属性必须存在，才能进行监视
 - 监视的两种写法：
-  - .new Vue时传入watch配置
-  - 通过vm.$watch监视
+  - `.new Vue`时传入watch配置
+  - 通过`vm.$watch`监视
 
 ## 深度监视
 
 - vue中的watch默认不监测对象内部值的改变（一层）
-- 配置deep:true可以监测对象内部值的改变（多层）
+- 配置`deep:true`可以监测对象内部值的改变（多层）
 
 备注：
 - vue自身可以监测对象内部值的改变，但vue提供的watch默认不可以
@@ -148,12 +148,33 @@ data:function() {
   - 通过setter实现监视，且要在new Vue时就传入要检测的数据
     - 对象中后追加的属性，Vue中默认不做响应式处理
     - 如需给后添加的属性做响应式，请使用如下API
-      - Vue.set(target, propertyName/index, value)
-      - 或Vm.$set(target, propertyName/index, value)
+      - `Vue.set(target, propertyName/index, value)`
+      - 或`Vm.$set(target, propertyName/index, value)`
 - 如何监测数组中的数据
   - 通过包裹数组更新元素的方法实现，本质就是做了两件事：
     - 调用原生对应的方法对数组进行更新
     - 重新解析模板，进而更新页面
 - 在Vue修改数组中的某个元素一定要用如下方法：
-  - 使用这些API：push、pop、shift、unshift、splice、sort、reverse
+  - 使用这些API：`push`、`pop`、`shift`、`unshift`、`splice`、`sort`、`reverse`
   - Vue.set()或vm.$set()
+
+特别注意：`Vue.set()`和`vm.$set()`不能给vm或vm的根对象添加属性。
+
+
+## 收集表单数据
+
+- 若<input type="text">，则用v-model收集的是value值，用户输入的就是value值
+- 若<input type="radio">，则用v-model收集的是value值，且要给标签配置value值
+- 若<input type="checkbox">
+  - 没有配置input的value属性，那么收集的是checked（布尔值）
+  - 配置input的value属性
+    - v-model的初始值是非数组，收集的就是checked（布尔值）
+    - v-model的初始值是数组，收集的就是value组成的数组
+
+备注：v-model的三个修饰符：
+- lazy：失去焦点再收集数据
+- number：输入字符串转为有效的数字
+- trim：输入首位空格过滤
+  
+
+
