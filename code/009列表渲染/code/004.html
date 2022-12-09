@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>监测数据改变的原理_对象</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="root">
+        <h2>学校名称：{{name}}</h2>
+        <h2>学校地址：{{address}}</h2>
+
+       <ul>
+            <li v-for="p in filPersons" :key="p.id">
+                {{p.name}}-{{p.age}}
+            </li>
+       </ul>
+
+      
+    </div>
+
+    <script type="text/javascript">
+            const vm = new Vue({
+            el:'#root',
+            data:{
+                name: '北京邮电大学',
+                address:'北京市海淀区', 
+                student:{
+                    name:'aaa',
+                    age:18
+                }
+            },
+        })
+    </script>
+
+</body>
+</html>

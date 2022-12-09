@@ -141,4 +141,19 @@ data:function() {
 - 对象写法。`:style={fontSize:xxx}`,其中xxx是动态值。
 - 数组写法。`:style=[a,b]`，其中a、b是样式对象。
 
+## 监视数据原理
 
+- Vue会监视data中所有层次的数据
+- 如何检测对象中的数据
+  - 通过setter实现监视，且要在new Vue时就传入要检测的数据
+    - 对象中后追加的属性，Vue中默认不做响应式处理
+    - 如需给后添加的属性做响应式，请使用如下API
+      - Vue.set(target, propertyName/index, value)
+      - 或Vm.$set(target, propertyName/index, value)
+- 如何监测数组中的数据
+  - 通过包裹数组更新元素的方法实现，本质就是做了两件事：
+    - 调用原生对应的方法对数组进行更新
+    - 重新解析模板，进而更新页面
+- 在Vue修改数组中的某个元素一定要用如下方法：
+  - 使用这些API：push、pop、shift、unshift、splice、sort、reverse
+  - Vue.set()或vm.$set()

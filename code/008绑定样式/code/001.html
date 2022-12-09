@@ -19,9 +19,19 @@
        <h2>当前的n值是:{{n}}</h2>
 
        <button @click="n++">点我n+1</button>
-       <div v-if="n == 1">Angular</div>
-       <div v-if="n == 2">Vue</div>
-       <div v-if="n == 3">React</div>
+
+
+       <!-- 使用v-if做条件渲染 -->
+       <!-- <div v-if="n == 1">Angular</div>
+       <div v-else-if="n == 2">Vue</div>
+       <div v-else-if="n == 3">React</div>
+       <div v-else>哈哈哈</div> -->
+
+       <template>
+       <h2>Angular</h2>
+       <h2>Vue</h2>
+       <h2>React</h2>
+       </template>
 
 
       

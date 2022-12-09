@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟一个数据监测</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+
+</head>
+<body>
+
+    <script type="text/javascript">
+        let data = {
+                name: '北京邮电大学',
+                address:'北京市海淀区', 
+        }
+        const obj = new Observer(data)
+        console.log(obs)
+
+        function Observer(obj){
+            const keys = Object.keys(obj)
+
+            keys.forEach((k)=>{
+                Object.defineProperties(this, k,{
+                    get(){
+                        return obj[k]
+                    },
+                    set(val){
+                        obj[k] = val;
+                    }
+                })
+            })
+        }
+
+    </script>
+
+</body>
+</html>
