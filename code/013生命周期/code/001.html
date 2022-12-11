@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生命周期</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.11.6/dayjs.min.js"></script>
+</head>
+<body>
+    <div id="root">
+      <h2>值为{{n}}</h2>
+      <button @click="n++">点我n+1</button>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                name:"ironartisan",
+                n:1,
+            },
+            beforeCreate() {
+                console.log('beforeCreate')
+                console.log(this)
+                // debugger
+                
+            },
+            created() {
+                console.log('created')
+                console.log(this)
+                // debugger
+            },
+            beforeMount() {
+                console.log('created')
+                console.log(this)
+                // debugger
+            },
+            mounted() {
+                console.log('created')
+                console.log(this)
+                // debugger
+            },
+        })
+
+    </script>
+
+</body>
+</html>

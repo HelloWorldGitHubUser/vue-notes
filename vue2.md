@@ -187,3 +187,74 @@ data:function() {
 备注：
 - 过滤器可以接收额外参数、多个过滤器也可以串联
 - 并没有改变原本的数据，是产生新的对应的数据
+
+
+## 生命周期
+
+![生命周期](https://cdn.jsdelivr.net/gh/ironartisan/picRepo/生命周期.png)
+
+常用的生命周期钩子:
+
+- mounted: 发送ajax请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】
+- beforeDestroy：清除定时器、解绑自定义事件、取消订阅消息等【收尾工作】。
+
+关于销毁Vue实例
+- 销毁后借助Vue开发者工具看不到任何信息。
+- 销毁后自定义事件会失效，但原生DOM事件依然有效。
+-  一般不会再beforeDestroy操作数据, 因为即便操作数据, 也不会再触发更新流程了。
+
+## 组件
+
+Vue中使用组件的三大步骤:
+
+- 定义组件(创建组件)
+- 注册组件
+- 使用组件(写组件标签)
+
+如何定义一个组件?
+
+- 使用`Vue.extend(options)`创建, 其中options 䄨new Vue(options)时传入的那个options几乎一样, 但也有点区别; 区别如下:
+  - el不要写, 为什么? 最终所有的组件都要经过一个 vm 的管理, 由 vm 中的 el 决定服务哪个容器。
+  -  data必须写成函数, 为什么? 避色组件被复用时, 数据存在引用关系。
+
+备注: 使用template可以配置组件结构。
+
+如何注册组件?
+
+- 局部注册：靠`new Vue`的时侯传入`components`选项
+- 全局注册：靠`Vue. component` ('组件名', 组件)
+  
+编写组件标签：
+- `<school></school>`
+
+几个注意点：
+
+- 关于组件名:
+  - 一个单词组成：
+    - 第一种写法（首字母小写）：`school`
+    - 第二种写法（首字母大写）：`School`
+  - 多个单词组成：
+    - 第一种写法（kebab-case命令）：`my-school`
+    - 第二种写法(CamelCase命令）：`MySchool`(需要Vue脚手架支持)
+  - 备注：
+    - 组件名尽可能回避`HMTL`中已有的元素名称，例如:`h2` `H2`都不行
+    - 可以使用name配置项指定组件再开发者工具中呈现的名字
+- 关于组件标签
+  - 第一种写法:`<school></school>`
+  - 第二种写法：`<school/>`
+  - 备注：不适用脚手架时，`<school/>`会导致后续组件不能渲染
+- 一个简写方式
+  `const school = Vue.extend(options)`可简写为：`const school = options`
+
+关于 VueComponent：
+- school组件本质上是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的
+- 我们只需要写`<school></school>`或`<school/>`，Vue解析时会帮我们创建school组件的实例对象，即Vue帮我们执行的：`new VueComponent(options)`
+- 特别注意：每次调用Vue.extend，返回的是一个全新的VueComponent
+- 关于this指向：
+  - 组件配置中：
+    - data函数、methods中的函数、watch中的函数、computed中的函数，他们的this均是【VueComponent实例对象】
+    - .new Vue()配置中：
+      - data函数、methods中的函数、watch中的函数、computed中的函数，他们的this均是【Vue实例对象】
+- VueComponent的实例对象，以后简称vc（也称为组件实例对象）
+- Vue的实例对象，以后简称vm
+
