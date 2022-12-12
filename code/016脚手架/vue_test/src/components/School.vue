@@ -2,11 +2,12 @@
     <div>
         <h2>学校名称：{{schoolName}}</h2>
         <h2>学校地址：{{address}}</h2>
-        <button @click="showName">点我提示学校名</button>
+        <button @click="show">点我提示学校名</button>
     </div>
 </template>
 
 <script>
+import {show} from '../mixin'
 export default {
     name: 'School',
     methods: {
@@ -25,6 +26,7 @@ export default {
             type:String,
             default:"beijing" //默认值
         }
-    }
+    },
+    mixins:[show]
 };
 </script>

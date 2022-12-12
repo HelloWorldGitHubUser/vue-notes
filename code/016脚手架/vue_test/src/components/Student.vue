@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import {show} from '../mixin'
 export default {
     name: 'Student',
     data(){
@@ -13,6 +14,7 @@ export default {
             name:'halo',
             age:18
         }
-    }
+    },
+    mixins:[show]
 };
 </script>
