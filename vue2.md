@@ -70,7 +70,7 @@ data:function() {
 观察发现：
 
 - data中所有的属性，最后都出现在vm身上
-- vm身上所有的属性及Vue原型上所有属性，再Vue模板中都可以直接使用。
+- vm身上所有的属性及Vue原型上所有属性，在Vue模板中都可以直接使用。
   
 ## 事件
 
@@ -213,7 +213,7 @@ Vue中使用组件的三大步骤:
 
 如何定义一个组件?
 
-- 使用`Vue.extend(options)`创建, 其中options 䄨new Vue(options)时传入的那个options几乎一样, 但也有点区别; 区别如下:
+- 使用`Vue.extend(options)`创建, 其中options 和 new Vue(options)时传入的那个options几乎一样, 但也有点区别; 区别如下:
   - el不要写, 为什么? 最终所有的组件都要经过一个 vm 的管理, 由 vm 中的 el 决定服务哪个容器。
   -  data必须写成函数, 为什么? 避色组件被复用时, 数据存在引用关系。
 
@@ -258,7 +258,7 @@ Vue中使用组件的三大步骤:
 - VueComponent的实例对象，以后简称vc（也称为组件实例对象）
 - Vue的实例对象，以后简称vm
 ## 脚手架文件结构
-
+```html
 	├── node_modules 
 	├── public
 	│   ├── favicon.ico: 页签图标
@@ -275,7 +275,7 @@ Vue中使用组件的三大步骤:
 	├── package.json: 应用包配置文件 
 	├── README.md: 应用描述文件
 	├── package-lock.json：包版本控制文件
-
+```
 ## 关于不同版本的Vue
 
 1. vue.js与vue.runtime.xxx.js的区别：
@@ -309,7 +309,7 @@ Vue中使用组件的三大步骤:
         schoolName:{
             type:String,// 类型
             required:true //必要的
-            default：'北邮'
+            default:'北邮'
         },
       }
   ```
