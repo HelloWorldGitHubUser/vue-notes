@@ -4,7 +4,7 @@
 
 ## 在线阅读地址
 
-在线阅读地址：<https://ironartisan.top/vue-notes/vue2.html>
+在线阅读地址：<https://ironartisan.github.io/vue-notes/vue2.html>
 
 ## 推荐使用工具与插件
 
