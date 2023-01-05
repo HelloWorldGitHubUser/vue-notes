@@ -246,6 +246,8 @@ Vue中使用组件的三大步骤:
 - 一个简写方式
   `const school = Vue.extend(options)`可简写为：`const school = options`
 
+![20230105210402](https://cdn.jsdelivr.net/gh/ironartisan/picRepo/20230105210402.png)
+
 关于 VueComponent：
 - school组件本质上是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的
 - 我们只需要写`<school></school>`或`<school/>`，Vue解析时会帮我们创建school组件的实例对象，即Vue帮我们执行的：`new VueComponent(options)`
